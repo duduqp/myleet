@@ -55,8 +55,8 @@ int threeSumClosest(vector<int>& nums, int target) {
 
 	return target - cur_min;
 }
-int main()
-{
-	vector<int> v{ -1,2,1,- 4 };
-    std::cout <<threeSumClosest(v,1); 
-}
+//int main()
+//{
+//	vector<int> v{ -1,2,1,- 4 };
+//    std::cout <<threeSumClosest(v,1); 
+//}

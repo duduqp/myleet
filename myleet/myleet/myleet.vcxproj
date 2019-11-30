@@ -156,6 +156,7 @@
   <ItemGroup>
     <ClCompile Include="cloest_three_sum.cpp" />
     <ClCompile Include="myleet.cpp" />
+    <ClCompile Include="paren_gen.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
