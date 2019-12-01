@@ -29,8 +29,7 @@ void generate_sub(int n ,int l, int r, int target, string & cur,vector<string> &
 		{
 			cur[l + r] = '(';
 			generate_sub(n,l+1,r,target+1,cur,ret);
-		}
-		
+		}		
 		if (r < n)
 		{
 			cur[l + r] = ')';
@@ -58,21 +57,28 @@ void generate_sub(int n ,int l, int r, int target, string & cur,vector<string> &
 
 vector<string> generateParenthesis(int n) {
 	vector<string > ret;
-	string s(2*n, ')');
-	for (int i = 0 ; i < n ; ++i)
+	string s(2 * n, ')');
+	for (int i = 0; i < n; ++i)
 	{
 		s[i] = '(';
 	}
 
-	generate_sub(n, 0, 0, 0, s, ret);
-	for (auto s : ret)
+	if (n <= 0)
 	{
-		std::cout << s << std::endl;
+		return ret;
 	}
-	return ret;
+	else if (n == 1)
+	{
+		ret.push_back(string("()"));
+		return ret;
+	}
+	else {
+		generate_sub(n, 0, 0, 0, s, ret);
+		for (auto s : ret)
+		{
+			std::cout << s << std::endl;
+		}
+		return ret;
+	}
 }
 
-int main()
-{
-	generateParenthesis(3);
-}

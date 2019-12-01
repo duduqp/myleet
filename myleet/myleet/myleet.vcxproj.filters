@@ -32,5 +32,17 @@
     <ClCompile Include="paren_gen.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="palindrome_partition.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="string.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="minimum.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="max_rectangle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
