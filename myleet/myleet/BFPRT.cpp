@@ -61,10 +61,10 @@ int median_of_two(const vector<int > &v1, const vector<int > &v2)
 
 }
 
-int main()
-{
-	vector<int > v1{ 1,3,5,6 };
-	vector<int > v2{ 2,4,7,8 };
-	std::cout << median_of_two(v1, v2);
-}
+//int main()
+//{
+//	vector<int > v1{ 1,3,5,6 };
+//	vector<int > v2{ 2,4,7,8 };
+//	std::cout << median_of_two(v1, v2);
+//}
 

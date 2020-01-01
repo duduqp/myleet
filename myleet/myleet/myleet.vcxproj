@@ -151,11 +151,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="LinkedList.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BFPRT.cpp" />
     <ClCompile Include="cloest_three_sum.cpp" />
+    <ClCompile Include="dp_LIS.cpp" />
+    <ClCompile Include="dp_min_path.cpp" />
+    <ClCompile Include="dup_test.cpp" />
+    <ClCompile Include="list.cpp" />
     <ClCompile Include="max_rectangle.cpp" />
     <ClCompile Include="minimum.cpp" />
     <ClCompile Include="string.cpp" />
