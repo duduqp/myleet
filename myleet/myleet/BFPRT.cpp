@@ -61,10 +61,109 @@ int median_of_two(const vector<int > &v1, const vector<int > &v2)
 
 }
 
-//int main()
+int k_largest(vector<int> v,int k)
+{
+	//return the index of the second largest element
+	make_heap(v.begin(), v.begin()+k, [](const int & l,const int & r){ return l>r; });
+
+	//from the kth
+
+	for (int i = k; i < v.size(); ++i)
+	{
+		//for each element ,compare with the smallest(down_thresh) of the k heap
+		if (v[i] > v[0])
+		{
+			//update the k heap
+			swap(v[0], v[i]);
+		}
+		//else continue 
+	}
+
+	return v[0];
+}
+
+//version2: partition technique
+//int k_largest_partition(vector<int> v, int k)
 //{
-//	vector<int > v1{ 1,3,5,6 };
-//	vector<int > v2{ 2,4,7,8 };
-//	std::cout << median_of_two(v1, v2);
+//
+//
 //}
+//
+
+int median_of_three(int & a, int & b, int &c)
+{
+	int ret = (a + b + c) - max({ a,b,c }) - min({ a,b,c });
+	int min_one = min({ a,b,c });
+	int max_one = max({ a,b,c });
+	a = min_one;
+	b = ret;
+	c = max_one;
+	return ret;
+}
+int partition_aux(vector<int > &v,int l,int r)
+{
+	//random choose the pivot
+	int mid = l + (r - l) >> 1;
+	int pivot = median_of_three(v[l],v[mid],v[r]);
+	//partition
+	/*
+	version a:error
+	int i = l + 1, j = r - 2;
+	swap(v[r - 1], v[mid]);
+	while (i<j)
+	{
+		while (v[i] < pivot&&i<j)
+		{
+			i++;
+		}
+		while (v[j] > pivot&&j>i)
+		{
+			j--;
+		}
+		if (i < j)
+		{
+			swap(v[i], v[j]);
+		}
+	}
+
+	swap(v[i],v[r - 1]);*/
+	
+
+	//modified:correct
+	int i = l, j = r - 1;
+		 swap(v[r - 1], v[mid]);
+		 while (i < j)
+		 {
+			 while (v[++i] < pivot)
+			 {
+
+			 }
+			 while (v[--j] > pivot)
+			 {
+				 j--;
+			 }
+			 if (i < j)
+			 {
+				 swap(v[i], v[j]);
+			 }
+		 }
+
+		 swap(v[i], v[r - 1]);
+
+	return i;
+}
+
+
+int main()
+{
+	vector<int > v1{ 6,5,1 };
+	vector<int > v2{ 2,4,7,8 };
+	//std::cout << median_of_two(v1, v2);
+	vector<int> v3{ 2,3,9,6,8,6,4,5,6 };//error case for version_a
+	//cout << k_largest(v3, 5);
+	/*cout << median_of_three(v1[0], v1[1], v1[2]) << endl;*/
+	int pivot = partition_aux(v3,0,8);
+	cout << pivot << endl;
+	for_each(v3.cbegin(), v3.cend(), [](const int & i) {cout << i << ends; });
+}
 

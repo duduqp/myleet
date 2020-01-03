@@ -86,10 +86,10 @@ bool k_smallest(const vector<int>)
 }
 
 
-int main()
-{
-	vector<int > v{ 8,1,2,3,4,5,6,7,8 };
-	build_heap(ORDER::MIN, 1, v[0], v);
-	print_heap(v, 1, v[0]);
-	return 0;
-}
+//int main()
+//{
+//	vector<int > v{ 8,1,2,3,4,5,6,7,8 };
+//	build_heap(ORDER::MIN, 1, v[0], v);
+//	print_heap(v, 1, v[0]);
+//	return 0;
+//}
