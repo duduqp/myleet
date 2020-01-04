@@ -239,18 +239,18 @@ int bfprt(vector<int > v,int l,int r, int k)
 //	//
 //
 //}
-int main()
-{
-	vector<int > v1{ 6,5,1 };
-	vector<int > v2{ 2,4,7,8 };
-	//std::cout << median_of_two(v1, v2);
-	vector<int> v3{ 2,3,9,6,8,6,4,5,6 };//error case for version_a
-	//cout << k_largest(v3, 5);
-	/*cout << median_of_three(v1[0], v1[1], v1[2]) << endl;*/
-	/*insertion_sort(v3,0,8);*/
-	//int pivot = partition_aux(v3, 0, 8);
-	//cout << pivot << endl;
-	cout << bfprt(v3, 0, 8, 4) << endl;
-	for_each(v3.cbegin(), v3.cend(), [](const int & i) {cout << i << ends; });
-}
+//int main()
+//{
+//	vector<int > v1{ 6,5,1 };
+//	vector<int > v2{ 2,4,7,8 };
+//	//std::cout << median_of_two(v1, v2);
+//	vector<int> v3{ 2,3,9,6,8,6,4,5,6 };//error case for version_a
+//	//cout << k_largest(v3, 5);
+//	/*cout << median_of_three(v1[0], v1[1], v1[2]) << endl;*/
+//	/*insertion_sort(v3,0,8);*/
+//	//int pivot = partition_aux(v3, 0, 8);
+//	//cout << pivot << endl;
+//	cout << bfprt(v3, 0, 8, 4) << endl;
+//	for_each(v3.cbegin(), v3.cend(), [](const int & i) {cout << i << ends; });
+//}
 
