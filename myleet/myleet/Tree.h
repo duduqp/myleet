@@ -2,6 +2,10 @@
 #include <stdexcept>
 #include <exception>
 #include <algorithm>
+#include <memory>
+#include <stack>
+#include <utility>
+#include <iostream>
 using namespace std;
 /*
 implement a binary search tree
@@ -40,6 +44,7 @@ public:
 		//based on traverse procedure
 		switch (od) {
 		case OD::PRE:
+
 			break;
 		case OD::IN:
 			break;
@@ -53,7 +58,8 @@ public:
 
 	TreeNode * search(int d){
 		TreeNode * tmp=root;
-		return search_at(tmp, d);
+		stack<shared_ptr<Tree::TreeNode> > s;
+		return search_at(tmp, d,s);
 	}
 	void insert(int d)
 	{
@@ -78,12 +84,14 @@ private:
 	{
 		TreeNode * tmp = root;
 		TreeNode * ret = root;
-		if ((ret=search_at(tmp,d)))
+		stack<shared_ptr<Tree::TreeNode> > s;
+		if ((ret=search_at(tmp,d,s)))
 		{
 			//already exists
 			return ret;
 		}
-		//not exists ,note the tmp cursor has moved to the proper node to insert
+		//not exists ,note the tmp cursor has moved to the proper node to insert,and stack cache the path
+		cout << s.size() << endl;
 		if (tmp->d < d)
 		{
 			//insert at right
@@ -103,10 +111,12 @@ private:
 
 	}
 
-	TreeNode * search_at(TreeNode *& root, int d)
+	TreeNode * search_at(TreeNode *& root, int d,stack<shared_ptr<Tree::TreeNode> > &s)
 	{
 		while (root)
 		{
+			auto p = make_shared<Tree::TreeNode>(*root);
+			s.push(p);
 			if (root->d == d)
 			{
 				return root;
@@ -133,22 +143,14 @@ private:
 			}
 		}
 	}
-	void update_height(TreeNode * root)
+	int height(TreeNode * root)
 	{
-		if (root->l&&root->r)
+		if (!root)
 		{
-			root->h = max(root->l->h, root->r->h) + 1;
+			return 0;
 		}
-		else if (root->l)
-		{
-			root->h = root->l->h + 1;
-		}
-		else if(root->r){
-			root->h = root->r->h + 1;
-		}
-		else {
-			root->h = 1;
-		}
+		root->h = max(height(root->l), height(root->r)) + 1;
+		return root->h;		
 	}
 	
 	TreeNode * root;
