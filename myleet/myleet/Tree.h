@@ -62,7 +62,25 @@ public:
 			}
 			break;
 		case OD::POST:
-
+			node * aux=nullptr;
+			s.push(tmp);
+			while (!s.empty())
+			{
+				tmp = s.top();
+				if (tmp->l&&aux != tmp->l&&aux!=tmp->r)
+				{
+					s.push(tmp->l);
+				}
+				else if (tmp->r&&aux != tmp->r)
+				{
+					s.push(tmp->r);
+				}
+				else {
+					cout << tmp->d << ends;
+					aux = tmp;
+					s.pop();
+				}
+			}
 			break;
 		default:
 
