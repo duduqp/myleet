@@ -157,6 +157,7 @@
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="backtracking.cpp" />
     <ClCompile Include="BFPRT.cpp" />
     <ClCompile Include="cloest_three_sum.cpp" />
     <ClCompile Include="dp_LIS.cpp" />

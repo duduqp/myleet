@@ -2,7 +2,12 @@
 #include <iostream>
 #include <memory>
 #include <algorithm>
+#include <stack>
+#include <memory>
 using namespace std;
+enum OD {
+	PRE,IN,POST,LEVEL
+};
 class tree
 {
 public:
@@ -11,15 +16,73 @@ public:
 		struct node *r;
 		struct node *f;
 		int d, h;
-		node(struct node *_l, struct node *_r,int _d,int _h,struct node * _f):l(_l),r(_r),d(_d),h(_d),f(_f){ }
+		node(struct node *_l, struct node *_r, int _d, int _h, struct node * _f) :l(_l), r(_r), d(_d), h(_d), f(_f) { }
 	};
 
-	static void rotate_LL(node * root)
+	static void show(OD od,node * root)
 	{
+		stack<node *> s;
+		switch (od)
+		{
+			node * tmp=root;
+		case OD::PRE:
+			s.push(tmp);
+			while (!s.empty())
+			{
+				tmp = s.top();
+				s.pop();
+				while (tmp)
+				{
+					cout << tmp->d << ends;
+					if (tmp->r)
+					{
+						s.push(tmp->r);
+						tmp = tmp->l;
+					}
+				}
+			}
+			break;
+		case OD::IN:
+			s.push(root);
+			while (!s.empty()||tmp)
+			{
+				while (tmp)
+				{
+					s.push(tmp);
+					tmp = tmp->l;
+				}
+				if (s.empty())
+				{
+					break;
+				}
+				tmp = s.top();
+				s.pop();
+				cout << tmp->d << ends;
+				tmp = tmp->r;
+			}
+			break;
+		case OD::POST:
+
+			break;
+		default:
+
+		}
+
+
 
 	}
+	
+	static void reconstruct(node * &root, node * &rl, node *&rr, node *&rll, node *&rlr, node *&rrl, node *&rrr)
+	{
+		root->l = rl;
+		root->r = rr;
+		rl->l = rll;
+		rl->r = rlr;
+		rr->l = rrl;
+		rr->r = rrr;
+	}
 
-	tree(){}
+	tree() :root(nullptr), _size(0) { }
 	tree(const tree & rhs)
 	{
 
@@ -53,17 +116,17 @@ public:
 
 	void insert(int d)
 	{
-
+		insert_at(root, d);
 	}
 
 	void remove(int d)
 	{
-
+		remove_at(root, d);
 	}
 
 	node * search(int d)
 	{
-
+		return search_at(root, d);
 	}
 
 private:
@@ -83,7 +146,7 @@ private:
 		}
 		else if (root->d < d)
 		{
-			return search_at(root->r,d);
+			return search_at(root->r, d);
 		}
 		else {
 			return search_at(root->l, d);
@@ -94,11 +157,11 @@ private:
 	{
 		if (!root)
 		{
-			root = new node(nullptr, nullptr, d, 1,root);
+			root = new node(nullptr, nullptr, d, 1, root);
 		}
 		else if (root->d == d)
 		{
-			;
+			return root;
 		}
 		else if (root->d < d)
 		{
@@ -107,12 +170,13 @@ private:
 		else {
 			root->l = insert_at(root->l, d);
 		}
+		_size++;
 		return root;
 	}
-	
+
 	node * remove_at(node * root, int d)
 	{
-		node * tmp = search_at(root,d);
+		node * tmp = search_at(root, d);
 		if (!tmp)
 		{
 			return root;
@@ -130,10 +194,10 @@ private:
 				//be a right child
 				f->r = nullptr;
 			}
-
+			_size--;
 			delete tmp;
 		}
-		else if (tmp->l&&(!tmp->r))
+		else if (tmp->l && (!tmp->r))
 		{
 			//has left child but not a right child
 			if (tmp == f->l)
@@ -143,7 +207,7 @@ private:
 			else {
 				f->r = tmp->l;
 			}
-
+			_size--;
 			delete tmp;
 		}
 		else if (tmp->r && (!tmp->l))
@@ -156,7 +220,7 @@ private:
 			else {
 				f->r = tmp->r;
 			}
-
+			_size--;
 			delete tmp;
 		}
 		else {
@@ -169,7 +233,7 @@ private:
 			}
 
 			tmp->d = precedentor->d;
-			remove_at(tmp->r, precedentor->d);
+			tmp->r=remove_at(tmp->r, precedentor->d);
 		}
 	}
 

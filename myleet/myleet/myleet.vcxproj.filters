@@ -68,5 +68,8 @@
     <ClCompile Include="dup_test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="backtracking.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
