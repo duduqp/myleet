@@ -176,6 +176,7 @@ private:
 		if (!root)
 		{
 			root = new node(nullptr, nullptr, d, 1, root);
+			return root;
 		}
 		else if (root->d == d)
 		{
@@ -265,5 +266,11 @@ private:
 			root->h = max(height_update(root->l), height_update(root->r)) + 1;
 			return root->h;
 		}
+	}
+	node * clone(tree * rhs)
+	{
+		//clone from another tree
+
+
 	}
 };

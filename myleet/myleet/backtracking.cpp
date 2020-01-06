@@ -103,6 +103,8 @@ void blocks(int mat[][10],int row,int col,int x,int y,bool vis[][10],int current
 
 
 }
+
+
 //int main()
 //{
 //// 	string s(5, ' ');
