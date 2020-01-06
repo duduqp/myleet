@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <stack>
 #include <memory>
+#include <queue>
 using namespace std;
 enum OD {
 	PRE,IN,POST,LEVEL
@@ -19,13 +20,22 @@ public:
 		node(struct node *_l, struct node *_r, int _d, int _h, struct node * _f) :l(_l), r(_r), d(_d), h(_d), f(_f) { }
 	};
 
-	static void show(OD od,node * root)
+	static void morris(OD od, tree & t)
 	{
+
+	}
+	static void show(OD od, const tree & t)
+	{
+		node * root = t->root;
 		stack<node *> s;
+		queue<node *> q;
+		node * tmp;
+		node * aux;
 		switch (od)
 		{
-			node * tmp=root;
+
 		case OD::PRE:
+			tmp = root;
 			s.push(tmp);
 			while (!s.empty())
 			{
@@ -37,14 +47,14 @@ public:
 					if (tmp->r)
 					{
 						s.push(tmp->r);
-						tmp = tmp->l;
 					}
+					tmp = tmp->l;
 				}
 			}
 			break;
 		case OD::IN:
-			s.push(root);
-			while (!s.empty()||tmp)
+			tmp = root;
+			while (!s.empty() || tmp)
 			{
 				while (tmp)
 				{
@@ -62,12 +72,13 @@ public:
 			}
 			break;
 		case OD::POST:
-			node * aux=nullptr;
+			tmp = root;
+			aux = nullptr;
 			s.push(tmp);
 			while (!s.empty())
 			{
 				tmp = s.top();
-				if (tmp->l&&aux != tmp->l&&aux!=tmp->r)
+				if (tmp->l&&aux != tmp->l&&aux != tmp->r)
 				{
 					s.push(tmp->l);
 				}
@@ -82,12 +93,37 @@ public:
 				}
 			}
 			break;
+		case OD::LEVEL:
+			q.push(root);
+			tmp = root;
+			while (!q.empty())
+			{
+				tmp = q.front();
+				q.pop();
+				//visit	
+				if (tmp) {
+					cout << tmp->d << ends;
+					if (tmp->l)
+					{
+						q.push(tmp->l);
+					}
+
+					if (tmp->r) {
+						q.push(tmp->r);
+					}
+				}else{
+					cout << "#" << endl;
+					q.push(nullptr);
+					q.push(nullptr);
+				}
+			}
+			break;
 		default:
+			//LEVEL
+
+			break;
 
 		}
-
-
-
 	}
 	
 	static void reconstruct(node * &root, node * &rl, node *&rr, node *&rll, node *&rlr, node *&rrl, node *&rrr)
@@ -101,14 +137,7 @@ public:
 	}
 
 	tree() :root(nullptr), _size(0) { }
-	tree(const tree & rhs)
-	{
-
-	}
-	~tree()
-	{
-
-	}
+	
 
 	tree & operator=(const tree & rhs)
 	{
@@ -135,6 +164,7 @@ public:
 	void insert(int d)
 	{
 		insert_at(root, d);
+		_size++;
 	}
 
 	void remove(int d)
@@ -176,11 +206,10 @@ private:
 		if (!root)
 		{
 			root = new node(nullptr, nullptr, d, 1, root);
-			return root;
 		}
 		else if (root->d == d)
 		{
-			return root;
+			throw invalid_argument("already exists");
 		}
 		else if (root->d < d)
 		{
@@ -189,7 +218,6 @@ private:
 		else {
 			root->l = insert_at(root->l, d);
 		}
-		_size++;
 		return root;
 	}
 
@@ -267,10 +295,16 @@ private:
 			return root->h;
 		}
 	}
-	node * clone(tree * rhs)
+	node * clone(node * rhs)
 	{
 		//clone from another tree
+		if (!rhs)
+		{
+			return nullptr;
+		}
 
+		return new node(clone(rhs->l), clone(rhs->r), rhs->d, rhs->h, rhs->f);
 
 	}
 };
+
