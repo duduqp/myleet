@@ -26,7 +26,7 @@ public:
 	}
 	static void show(OD od, const tree & t)
 	{
-		node * root = t->root;
+		node * root = t.root;
 		stack<node *> s;
 		queue<node *> q;
 		node * tmp;
