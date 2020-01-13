@@ -228,10 +228,10 @@ string getPermutation(int n, int k) {
 	}
 	return ret;
 }
-int main(void)
-{
-	string s = "wordgoodgoodgoodbestword";
-	vector<string> v{ "word","good","best","good" };
-	//auto ret = findSubstring(s,v);
-	return 0;
-}
+//int main(void)
+//{
+//	string s = "wordgoodgoodgoodbestword";
+//	vector<string> v{ "word","good","best","good" };
+//	//auto ret = findSubstring(s,v);
+//	return 0;
+//}
