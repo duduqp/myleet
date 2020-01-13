@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <functional>
 #include <cmath>
+#include <string>
 using namespace std;
 
 int threeSumClosest(vector<int>& nums, int target) {
@@ -55,8 +56,29 @@ int threeSumClosest(vector<int>& nums, int target) {
 
 	return target - cur_min;
 }
+
+string digit_trans(int d,int BASE=16)
+{
+	string ret;
+	if (BASE < 0 || BASE>16)
+	{
+		return ret;
+	}
+	if (!d||!BASE)
+	{
+		return "0";
+	}
+	string lex("0123456789ABCDEF");
+	lex = lex.substr(0, BASE);
+	while (d)
+	{
+		ret.push_back(lex.at(d % BASE));
+		d /= BASE;
+	}
+	reverse(ret.begin(), ret.end());
+	return ret;
+}
 //int main()
 //{
-//	vector<int> v{ -1,2,1,- 4 };
-//    std::cout <<threeSumClosest(v,1); 
+//   std::cout << digit_trans(16,16); 
 //}

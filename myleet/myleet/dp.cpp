@@ -156,11 +156,72 @@ pair<vector<pair<int, int>>, int> min_path(const MAT & m)
 	return { path,ret };
 }
 
-
-int main(void)
+//integer programming
+int min_change(vector<int> quota, int target)
 {
-	MAT m1{ {1,2,3},{1,2,3} ,{1,2,3} };
-	min_path(m1);
-	//print_mat(mat_power(m1, 2));
-	exit(0);
+	//dp-a
+	//init
+	sort(quota.begin(), quota.end());
+	if (quota[0] >= target)
+	{
+		return target/quota[0];
+	}
+	int sz = quota.size();
+	//vector<vector<int> > dp(sz, vector<int>(target+1, 0));
+	//for (int i = 0; i < target+1; ++i)
+	//{
+	//	if (i != quota[0])
+	//	{
+	//		dp[0][i] = INT_MAX;
+	//	}
+	//	else {
+	//		dp[0][i] = 1;
+	//	}
+	//}
+
+	//for (int i = 0; i < sz; ++i)
+	//{
+	//	dp[i][0] = 0;
+	//}
+	//
+	//for (int i= 0; i < sz; i++)//by row!!!
+	//{
+	//	for (int j = 0; j < target+1; ++j) {
+	//		if (j - quota[i] >= 0 && dp[i][j - quota[i]] != INT_MAX)
+	//		{
+	//			dp[i][j] = min(dp[i][j - quota[i]] + 1, dp[i - 1][j]);
+	//		}else {
+	//			dp[i][j] = dp[i - 1][j];
+	//		}
+	//	}
+	//}
+	//return dp[sz - 1][target] == INT_MAX ? -1 : dp[sz - 1][target];
+
+	//dp-b
+	//init
+	vector<int > dp(target+1,INT_MAX);//must convert by row
+	dp[quota[0]] = 1;
+	
+	
+	for (int i = 0; i < sz; ++i)
+	{
+		for (int j = 0; j <target+1; ++j)
+		{
+			if (j - quota[i] >= 0 && dp[j - quota[i]] != INT_MAX)
+			{
+				dp[j] = min(dp[j - quota[i]] + 1, dp[j]);
+			}
+			//remain same as dp"[i-1]"[j]
+		}
+	}
+
+	return dp[target] == INT_MAX ? -1 : dp[target];
 }
+
+//int main(void)
+//{
+//	MAT m1{ {1,2,3},{1,2,3} ,{1,2,3} };
+//	min_path(m1);
+//	//print_mat(mat_power(m1, 2));
+//	exit(0);
+//}
