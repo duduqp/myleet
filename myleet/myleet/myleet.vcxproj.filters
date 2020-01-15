@@ -83,5 +83,8 @@
     <ClCompile Include="dfs.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="bignum.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

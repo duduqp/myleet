@@ -54,9 +54,9 @@ void dfs(vector<vector<int>> &ret, vector<int>& cur, vector<int>& candidates, in
 	}
 
 }
-int main(void)
-{
-	vector<int > vec{ 10,1,2,7,6,1,5 };
-	combinationSum2(vec, 8);
-	return 0;
-}
+//int main(void)
+//{
+//	vector<int > vec{ 10,1,2,7,6,1,5 };
+//	combinationSum2(vec, 8);
+//	return 0;
+//}
