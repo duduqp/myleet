@@ -107,7 +107,7 @@ void fill_sudoku(const int & x, const int& y, vector<vector<char>> & board, vect
 					fill_sudoku(x, y + 1, board, sq_choice, r_choice, c_choice, flag);
 				}
 				else {
-					fill_sudoku(x + 1, y, board, sq_choice, r_choice, c_choice, flag);
+					fill_sudoku(x + 1, 0, board, sq_choice, r_choice, c_choice, flag);
 				}
 				if (!flag)
 				{
@@ -164,20 +164,20 @@ void print_2d_vec(const vector<vector<char> >& m)
 	}
 	cout.flush();
 }
-int main(void)
-{
-	//cout << longestValidParentheses('()(((())((((((()(()))');
-	vector<vector<char> > m{ {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
-		{'6', '.', '.', '1', '9', '5', '.', '.', '.'},
-		{'.', '9', '8', '.', '.', '.', '.', '6', '.'},
-		{'8', '.', '.', '.', '6', '.', '.', '.', '3'},
-		{'4', '.', '.', '8', '.', '3', '.', '.', '1'},
-		{'7', '.', '.', '.', '2', '.', '.', '.', '6'},
-		{'.', '6', '.', '.', '.', '.', '2', '8', '.'},
-		{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
-		{'.', '.', '.', '.', '8', '.', '.', '7', '9'} };
-	print_2d_vec(m);
-	solveSudoku(m);
-	print_2d_vec(m);
-	return 0;
-}
+//int main(void)
+//{
+//	//cout << longestValidParentheses('()(((())((((((()(()))');
+//	vector<vector<char> > m{ {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+//		{'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+//		{'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+//		{'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+//		{'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+//		{'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+//		{'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+//		{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+//		{'.', '.', '.', '.', '8', '.', '.', '7', '9'} };
+//	print_2d_vec(m);
+//	solveSudoku(m);
+//	print_2d_vec(m);
+//	return 0;
+//}
