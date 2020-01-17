@@ -166,6 +166,7 @@
     <ClCompile Include="dp_LIS.cpp" />
     <ClCompile Include="dp_min_path.cpp" />
     <ClCompile Include="dup_test.cpp" />
+    <ClCompile Include="jump.cpp" />
     <ClCompile Include="list.cpp" />
     <ClCompile Include="max_rectangle.cpp" />
     <ClCompile Include="minimum.cpp" />

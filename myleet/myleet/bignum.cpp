@@ -1,4 +1,5 @@
 #include "pch.h"
+#include <cstdio>
 #include <string>
 #include <algorithm>
 #include <iostream>
@@ -70,9 +71,13 @@ void stradd(string & s1, const string & s2, int leftshift)
 		i--;
 	}
 }
-int main(void)
-{
-	string ret = mult_digit("124", 9);
-	cout << multiply("456","123")<< "\n";
-	exit(0);
-}
+const char * tonight = "tonight";
+//int main(void)
+//{
+//	printf("%d\n", tonight);
+//	//string ret = mult_digit("124", 9); 
+//	//cout << multiply("456","123")<< "\n";
+//	const char * liffer[] = { "tonight","go","die" };
+//	cout << liffer << &liffer << "\n";
+//	exit(0);
+//}
