@@ -170,6 +170,7 @@
     <ClCompile Include="list.cpp" />
     <ClCompile Include="max_rectangle.cpp" />
     <ClCompile Include="minimum.cpp" />
+    <ClCompile Include="permutation_combination.cpp" />
     <ClCompile Include="stl_prac.cpp" />
     <ClCompile Include="string.cpp" />
     <ClCompile Include="myleet.cpp" />

@@ -89,5 +89,8 @@
     <ClCompile Include="jump.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="permutation_combination.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
