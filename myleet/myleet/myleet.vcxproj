@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="skiplist.h" />
     <ClInclude Include="tree.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
