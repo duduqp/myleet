@@ -162,6 +162,7 @@
     <ClCompile Include="BFPRT.cpp" />
     <ClCompile Include="bignum.cpp" />
     <ClCompile Include="cloest_three_sum.cpp" />
+    <ClCompile Include="datastructure.cpp" />
     <ClCompile Include="dfs.cpp" />
     <ClCompile Include="dp.cpp" />
     <ClCompile Include="dp_LIS.cpp" />

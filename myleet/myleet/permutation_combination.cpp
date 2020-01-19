@@ -273,41 +273,41 @@ string GetPermutation(int n, int k) {
 	}
 	return ret;
 }
-int main(void)
-{
-	/*vector<int> t{ 1,2,3,4,5,6,7 };
-	auto ret = subset(t);
-	for (const auto  & row : ret)
-	{
-		for (const auto & e : row)
-		{
-			cout << e << " ";
-		}
-		cout << "s\n";
-	}
-	cout.flush();*/
-	/*vector<vector<int> > mat{ {1},{2},{3},{4} };
-	auto ret = spiralOrder(mat);
-	for (const auto & e : ret)
-	{
-		cout << e << " ";
-	}
-	cout << endl;*/
-	/*auto ret= n_puzzle(4);
-	for (const auto & row : ret)
-	{
-		for (const auto & s : row)
-		{
-			cout << s << "\n";
-		}
-		cout << endl;
-	}*/
-	//auto it = graycode();
-	vector<int> nums{ 3,2,1,0,5 };
-	//cout << canJump(nums);
-	GetPermutation(3, 4);
-	return 0;
-}
-
-
+//int main(void)
+//{
+//	/*vector<int> t{ 1,2,3,4,5,6,7 };
+//	auto ret = subset(t);
+//	for (const auto  & row : ret)
+//	{
+//		for (const auto & e : row)
+//		{
+//			cout << e << " ";
+//		}
+//		cout << "s\n";
+//	}
+//	cout.flush();*/
+//	/*vector<vector<int> > mat{ {1},{2},{3},{4} };
+//	auto ret = spiralOrder(mat);
+//	for (const auto & e : ret)
+//	{
+//		cout << e << " ";
+//	}
+//	cout << endl;*/
+//	/*auto ret= n_puzzle(4);
+//	for (const auto & row : ret)
+//	{
+//		for (const auto & s : row)
+//		{
+//			cout << s << "\n";
+//		}
+//		cout << endl;
+//	}*/
+//	//auto it = graycode();
+//	vector<int> nums{ 3,2,1,0,5 };
+//	//cout << canJump(nums);
+//	GetPermutation(3, 4);
+//	return 0;
+//}
+//
+//
 
