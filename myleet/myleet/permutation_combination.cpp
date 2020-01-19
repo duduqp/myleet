@@ -119,6 +119,160 @@ void n_queue(vector<vector<string> > & ret, vector<int> & cur, int index,int n,v
 
 
 }
+
+void traval_round(const vector<vector<int> > & mat,vector<int> & ret, int lx, int ly, int rx, int ry)
+{
+	if (lx == rx)
+	{
+		while (ly <= ry)
+		{
+			ret.push_back(mat[lx][ly++]);
+		}
+	}
+	else if (ly == ry)
+	{
+		while (lx <= rx)
+		{
+			ret.push_back(mat[lx++][ly]);
+		}
+	}
+	else {
+		int i = ly;
+		for (; i <= ry; ++i)
+		{
+			ret.push_back(mat[lx][i]);
+		}
+
+		i = lx+1;
+		for (; i <= rx; ++i)
+		{
+			ret.push_back(mat[i][ry]);
+		}
+
+		i = ry-1;
+		for (; i >= ly; --i)
+		{
+			ret.push_back(mat[rx][i]);
+		}
+
+		i = rx-1;
+		for (; i >= lx+1; --i)
+		{
+			ret.push_back(mat[i][ly]);
+		}
+	}
+}
+
+vector<int> spiralOrder(vector<vector<int>>& matrix) {
+	vector<int> ret;
+	if (matrix.empty())
+	{
+		return ret;
+	}
+	int row = matrix.size()-1;
+	int col = matrix[0].size()-1;
+	int lx = 0, ly = 0;
+	int rx = row, ry = col;
+	while (lx <= rx && ly <= ry)
+	{
+		traval_round(matrix, ret, lx, ly, rx, ry);
+			lx++;
+			rx--;
+			ly++;
+			ry--;
+	}
+	return ret;
+}
+
+
+bool canJump(vector<int>& nums) {
+	if (nums[0] == 0)
+	{
+		return false;
+	}
+	int rightmost = 0;
+	int i = 0;
+	while (i >= 0 && i < nums.size() - 1)
+	{
+		if (i + nums[i] > rightmost)
+		{
+			rightmost = i + nums[i];
+			if (rightmost >= nums.size() - 1)
+			{
+				return true;
+			}
+			i = rightmost;
+			continue;
+		}
+
+		i--;
+	}
+	if (i<(nums.size() - 1))
+	{
+		return false;
+	}
+	/*if (std::less<int>()(i,(nums.size() - 1)))
+	{
+		return false;
+	}*/
+	return true;
+}
+
+vector<vector<int>> merge(vector<vector<int>>& intervals) {
+	return {};
+}
+
+string GetPermutation(int n, int k) {
+
+	vector<int> product(n, 1);
+	vector<bool> digits(n, false);
+	string ret;
+	int i = 1;
+	for (; i < n; i++)
+	{
+		product[i] = product[i - 1] * (i + 1);
+	}
+	if (k > product[n - 1])
+	{
+		return ret;
+	}
+	i = n - 1;
+	int j = 0;
+	int m = 0;
+	while (i >= 0 && k)
+	{
+		i--;
+		m = 0;
+		int rank = ((k - 1) / product[i]) + 1;
+		k = k % product[i];
+		for (j = 0; j < n; ++j)
+		{
+			if (!digits[j])
+			{
+				m++;
+			}
+			if (m == rank)
+			{
+				break;
+			}
+		}
+
+		ret.push_back(j + 1 + '0');
+		digits[j] = true;
+	}
+
+	if (k == 0 && (ret.size() < n))
+	{
+		for (int j = n - 1; (ret.size() < n)&&j >= 0; j--)
+		{
+			if (!digits[j])
+			{
+				ret.push_back(j + 1 + '0');
+			}
+		}
+	}
+	return ret;
+}
 int main(void)
 {
 	/*vector<int> t{ 1,2,3,4,5,6,7 };
@@ -129,10 +283,17 @@ int main(void)
 		{
 			cout << e << " ";
 		}
-		cout << "\n";
+		cout << "s\n";
 	}
 	cout.flush();*/
-	auto ret= n_puzzle(4);
+	/*vector<vector<int> > mat{ {1},{2},{3},{4} };
+	auto ret = spiralOrder(mat);
+	for (const auto & e : ret)
+	{
+		cout << e << " ";
+	}
+	cout << endl;*/
+	/*auto ret= n_puzzle(4);
 	for (const auto & row : ret)
 	{
 		for (const auto & s : row)
@@ -140,11 +301,13 @@ int main(void)
 			cout << s << "\n";
 		}
 		cout << endl;
-	}
+	}*/
 	//auto it = graycode();
+	vector<int> nums{ 3,2,1,0,5 };
+	//cout << canJump(nums);
+	GetPermutation(3, 4);
 	return 0;
 }
-
 
 
 
