@@ -218,10 +218,59 @@ int min_change(vector<int> quota, int target)
 	return dp[target] == INT_MAX ? -1 : dp[target];
 }
 
-//int main(void)
-//{
-//	MAT m1{ {1,2,3},{1,2,3} ,{1,2,3} };
-//	min_path(m1);
-//	//print_mat(mat_power(m1, 2));
-//	exit(0);
-//}
+
+//minimum edit distance
+int min_edit(const string & s1, const string & s2, vector<int> cost)
+{
+	if (s1 == s2)
+	{
+		return 0;
+	}
+
+
+	int insert_cost = cost[0];
+	int remove_cost = cost[1];
+	int edit_cost = cost[2];
+
+
+	vector<int> dp(s1.size()+1, 0);
+	for (int i = 0; i <= s1.size(); i++)
+	{
+		dp[i] = insert_cost * i;
+	}
+
+	int tmp = dp[0];
+	int pre = tmp;
+	for (int i = 1; i <= s2.size(); ++i)
+	{
+		pre = dp[0];
+		dp[0] = (i)*remove_cost;
+		for (int j = 1; j < dp.size(); ++j)
+		{
+			tmp = dp[j];
+			if (s1[j - 1] == s2[i-1])
+			{
+				dp[j] = pre;
+			}
+			else {
+				dp[j] = pre + edit_cost;
+			}
+			dp[j] = min(min(tmp + remove_cost,dp[j]), dp[j - 1] + insert_cost);
+			pre = tmp;
+		}
+	}
+
+	return dp.back();
+}
+int main(void)
+{
+	//MAT m1{ {1,2,3},{1,2,3} ,{1,2,3} };
+	//min_path(m1);
+	//print_mat(mat_power(m1, 2));
+
+	string s1("adc");
+	string s2("abc");
+	vector<int > cost{5,3,100};
+	cout << min_edit(s1, s2, cost);
+	exit(0);
+}

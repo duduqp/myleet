@@ -30,6 +30,9 @@
     <ClInclude Include="skiplist.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -95,7 +98,10 @@
     <ClCompile Include="permutation_combination.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="datastructure.cpp">
+    <ClCompile Include="Stack.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="skiplist.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

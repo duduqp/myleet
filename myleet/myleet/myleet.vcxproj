@@ -154,6 +154,7 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="skiplist.h" />
+    <ClInclude Include="Stack.h" />
     <ClInclude Include="tree.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
@@ -162,7 +163,7 @@
     <ClCompile Include="BFPRT.cpp" />
     <ClCompile Include="bignum.cpp" />
     <ClCompile Include="cloest_three_sum.cpp" />
-    <ClCompile Include="datastructure.cpp" />
+    <ClCompile Include="skiplist.cpp" />
     <ClCompile Include="dfs.cpp" />
     <ClCompile Include="dp.cpp" />
     <ClCompile Include="dp_LIS.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="max_rectangle.cpp" />
     <ClCompile Include="minimum.cpp" />
     <ClCompile Include="permutation_combination.cpp" />
+    <ClCompile Include="Stack.cpp" />
     <ClCompile Include="stl_prac.cpp" />
     <ClCompile Include="string.cpp" />
     <ClCompile Include="myleet.cpp" />

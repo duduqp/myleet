@@ -5,6 +5,8 @@
 #include <map>
 #include <algorithm>
 #include <set>
+#include <stack>
+#include <deque>
 using namespace std;
 
 
@@ -228,10 +230,98 @@ string getPermutation(int n, int k) {
 	}
 	return ret;
 }
+void process(int & i, const string & path, deque<string> & cache);
+string simplifyPath(string path) {
+	deque<string> cache;
+	string ret;
+	int i = 0;
+	for (; i < path.size();)
+	{
+		if (path[i] == '.' || path[i] == '/')
+		{
+			process(i, path, cache);
+		}
+		else {
+			int j = i;
+			while (i < path.size() && (path[i] != '.'&&path[i] != '/'))
+			{
+				i++;
+			}
+			cache.push_back(path.substr(j, i - j));
+
+		}
+	}
+
+
+	while (!cache.empty())
+	{
+		ret.push_back('/');
+		ret.append(cache.front());
+		cache.pop_front();
+	}
+
+	return ret;
+}
+
+void process(int & i, const string & path, deque<string> & cache)
+{
+	if (path[i] == '/')
+	{
+		while (i < path.size() && path[i] == '/')
+		{
+			i++;
+		}
+	}
+
+	while (i < path.size() && (path[i] == '.' || path[i] == '/'))
+	{
+		if (path[i] == '/')
+		{
+			while (i < path.size() && path[i] == '/')
+			{
+				i++;
+			}
+		}
+		else {
+			i++;
+			if (i < path.size())
+			{
+				if (path[i] == '/')
+				{
+					i++;
+				}
+				else if (path[i] == '.')
+				{
+					if (i + 1 < path.size() && path[i + 1] == '.')
+					{
+						int j = i - 1;
+						i++;
+						while (i < path.size() && path[i] == '.')
+						{
+							i++;
+						}
+						cache.push_back(path.substr(j, i - j));
+						continue;
+					}
+					if (!cache.empty())
+					{
+						cache.pop_back();
+					}
+					i++;
+				}
+				else {
+					break;
+				}
+			}
+		}
+	}
+}
 //int main(void)
 //{
-//	string s = "wordgoodgoodgoodbestword";
-//	vector<string> v{ "word","good","best","good" };
+//	//string s = "wordgoodgoodgoodbestword";
+//	//vector<string> v{ "word","good","best","good" };
 //	//auto ret = findSubstring(s,v);
+//	//simplifyPath("/a/../../b/../c//.//");
+//	cout << a << b;
 //	return 0;
 //}
