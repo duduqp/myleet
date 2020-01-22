@@ -262,15 +262,20 @@ int min_edit(const string & s1, const string & s2, vector<int> cost)
 
 	return dp.back();
 }
-int main(void)
-{
-	//MAT m1{ {1,2,3},{1,2,3} ,{1,2,3} };
-	//min_path(m1);
-	//print_mat(mat_power(m1, 2));
 
-	string s1("adc");
-	string s2("abc");
-	vector<int > cost{5,3,100};
-	cout << min_edit(s1, s2, cost);
-	exit(0);
-}
+
+
+
+//int main(void)
+//{
+//	MAT m1{ {1,2,3},{1,2,3} ,{1,2,3} };
+//	min_path(m1);
+//	print_mat(mat_power(m1, 2));
+//	
+//	
+//	/*string s1("adc");
+//	string s2("abc");
+//	vector<int > cost{5,3,100};
+//	cout << min_edit(s1, s2, cost);
+//	exit(0);*/
+//}
