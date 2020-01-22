@@ -220,11 +220,11 @@ string minWindow(string s, string t) {
 	return Min == INT_MAX? "":s.substr(minleft, Min);
 }
 
-int main()
-{
-	//vector<vector<int>> m{ {1, 4, 7, 11, 15}, { 2, 5, 8, 12, 19}, { 3, 6, 9, 16, 22}, { 10, 13, 14, 17, 24}, { 18, 21, 23, 26, 30} };
-	//std::cout << searchMatrix_a(mat, 3);
-	std::cout << minWindow("cabwefgewcwaefgcf"
-		,"cae");
-
-}
+//int main()
+//{
+//	//vector<vector<int>> m{ {1, 4, 7, 11, 15}, { 2, 5, 8, 12, 19}, { 3, 6, 9, 16, 22}, { 10, 13, 14, 17, 24}, { 18, 21, 23, 26, 30} };
+//	//std::cout << searchMatrix_a(mat, 3);
+//	std::cout << minWindow("cabwefgewcwaefgcf"
+//		,"cae");
+//
+//}
