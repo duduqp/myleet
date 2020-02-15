@@ -146,14 +146,14 @@ bool dfs_b(const vector<vector<char> > & board, const int & x, const int & y, bo
 	}
 	return false;
 }
-int main(void)
-{
-	vector<vector<char>> board{
-		{'A','B','C','E' },
-		{'S', 'F', 'C', 'S'},
-		{'A', 'D', 'E', 'E'}
-	};
-	exist(board, "ABCCED");
-	//combinationSum2(vec, 8);
-	return 0;
-}
+//int main(void)
+//{
+//	vector<vector<char>> board{
+//		{'A','B','C','E' },
+//		{'S', 'F', 'C', 'S'},
+//		{'A', 'D', 'E', 'E'}
+//	};
+//	exist(board, "ABCCED");
+//	//combinationSum2(vec, 8);
+//	return 0;
+//}

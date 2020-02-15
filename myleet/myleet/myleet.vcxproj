@@ -163,6 +163,7 @@
     <ClCompile Include="BFPRT.cpp" />
     <ClCompile Include="bignum.cpp" />
     <ClCompile Include="cloest_three_sum.cpp" />
+    <ClCompile Include="geometry.cpp" />
     <ClCompile Include="skiplist.cpp" />
     <ClCompile Include="dfs.cpp" />
     <ClCompile Include="dp.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="permutation_combination.cpp" />
     <ClCompile Include="Stack.cpp" />
     <ClCompile Include="stl_prac.cpp" />
+    <ClCompile Include="string+dfs.cpp" />
     <ClCompile Include="string.cpp" />
     <ClCompile Include="myleet.cpp" />
     <ClCompile Include="palindrome_partition.cpp" />

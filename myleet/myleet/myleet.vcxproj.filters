@@ -104,5 +104,11 @@
     <ClCompile Include="skiplist.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="string+dfs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="geometry.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
